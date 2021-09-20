@@ -1,0 +1,8 @@
+.latencyChartContainer {
+    width: 100%;
+    height: 20%;
+    background-color: rgb(181, 176, 194);
+    border-radius: 6px;
+    box-shadow: 0 3rem 5rem -2rem rgba(0, 0, 0, 0.6);
+    margin: 20px 0;
+}
