@@ -26,25 +26,27 @@ const checkCountryCode = (code, countries_list) => {
     return result;
 }
 
-const MlabContainer = ({date, options , iso_2, iso_3, countries}) => {
+const MlabContainer = ({date, options , iso_2, iso_3, countries, setMlabFilter}) => {
 
     const [mlabDataDate, setMlabDataDate] = useState({});
+    //console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>mlabDataDate", mlabDataDate);
 
     useEffect(async () => {
         console.log("Fetching Date filtered data...");
+        console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>date", date);
         const result = await fetchMLabDataPerDate(date);
         const tempDateFilterData = JSON.parse(result);
         const dateFilterData = tempDateFilterData.filter(countryData => checkCountryCode(countryData.country_code, iso_2));
-        
         setMlabDataDate(dateFilterData);
+        setMlabFilter(mlabDataDate);
         //console.log("Mlab Data: ", (dateFilterData));
         console.log("Done fetching Date filtered data...");
-    }, []);    
+    }, [date]);    
     return (
         <div className='mlabContainer'>
-            <div className="chartFilter">
+            {/* <div className="chartFilter">
                 <CountryFilterList countriesData={mlabDataDate} dateFilter={date}/>
-            </div>
+            </div> */}
             <div className="charts">
                 <PieChartDateFilter pieChartData={mlabDataDate} dateFilter={date} filterOption={options} />
                 <LatencyChart latencyData={mlabDataDate} dateFilter={date}/>

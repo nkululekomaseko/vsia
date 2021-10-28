@@ -1,3 +1,17 @@
+.mainContainer {
+    display: flex;
+}
+
 .mapContainer {
     height: 400px;
+}
+
+.leftbar {
+    flex: 18;
+    margin: 30px;
+}
+
+.rightbar {
+    flex: 6;
+    margin: 10px;
 }

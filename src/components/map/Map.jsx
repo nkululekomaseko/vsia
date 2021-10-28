@@ -12,8 +12,7 @@ import { fetchGeoData, fetchGeoDataFile, fetchMLabDataPerDate } from '../api/Api
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        flexGrow: 1,
-        marginLeft: '20px'
+        flexGrow: 1
     },
     mapContainer: {
         height: '650px'
@@ -27,15 +26,15 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const africanCountries_ISO_3 = ["TUN", "UGA", "ESH", "ZMB", "ZWE"];
+// const africanCountries_ISO_3 = ["TUN", "UGA", "ESH", "ZMB", "ZWE"];
 
-const africanCountries_ISO_2 = ["TN", "UG", "EH", "ZM", "ZW"];
+// const africanCountries_ISO_2 = ["TN", "UG", "EH", "ZM", "ZW"];
 
-const africanCountries = ["TUNISIA", "UGANDA", "WESTERN SAHARA", "ZAMBIA", "ZIMBABWE"]
-// const africanCountries = ["ALGERIA", "ANGOLA", "BENIN", "BOTSWANA", "BURKINA FASO", "BURUNDI", "CAMEROON", "CAPE VERDE", "CENTRAL AFRICAN REPUBLIC", "CHAD", "COMOROS", "CONGO", "CONGO, THE DEMOCRATIC REPUBLIC OF THE", "COTE D’IVOIRE", "DJIBOUTI", "EGYPT", "EQUATORIAL GUINEA", "ERITREA", "ETHIOPIA", "GABON", "GAMBIA", "GHANA", "GUINEA", "GUINEA-BISSAU", "KENYA", "LESOTHO", "LIBERIA", "LIBYAN ARAB JAMAHIRIYA", "MADAGASCAR", "MALI", "MALAWI", "MAURITANIA", "MAURITIUS", "MAYOTTE", "MOROCCO", "MOZAMBIQUE", "NAMIBIA", "NIGER", "NIGERIA", "REUNION ISLAND", "RWANDA", "SAO TOME AND PRINCIPE", "SENEGAL", "SEYCHELLES", "SIERRA LEONE", "SOMALIA", "SOUTH AFRICA", "SOUTH SUDAN", "SUDAN", "SWAZILAND", "TANZANIA, UNITED REPUBLIC OF", "TOGO", "TUNISIA", "UGANDA", "WESTERN SAHARA", "ZAMBIA", "ZIMBABWE"]
-// const africanCountries_ISO_3 = ["DZA", "AGO", "BEN", "BWA", "BFA", "BDI", "CMR", "CPV", "CAF", "TCD", "COM", "COG", "COD", "CIV", "DJI", "EGY", "GNQ", "ERI", "ETH", "GAB", "GMB", "GHA", "GIN", "GNB", "KEN", "LSO", "LBR", "LBY", "MDG", "MLI", "MWI", "MRT", "MUS", "MYT", "MAR", "MOZ", "NAM", "NER", "NGA", "REU", "RWA", "STP", "SEN", "SYC", "SLE", "SOM", "ZAF", "SSD", "SDN", "SWZ", "TZA", "TGO", "TUN", "UGA", "ESH", "ZMB", "ZWE"];
+// const africanCountries = ["TUNISIA", "UGANDA", "WESTERN SAHARA", "ZAMBIA", "ZIMBABWE"]
+const africanCountries = ["ALGERIA", "ANGOLA", "BENIN", "BOTSWANA", "BURKINA FASO", "BURUNDI", "CAMEROON", "CAPE VERDE", "CENTRAL AFRICAN REPUBLIC", "CHAD", "COMOROS", "CONGO", "CONGO, THE DEMOCRATIC REPUBLIC OF THE", "COTE D’IVOIRE", "DJIBOUTI", "EGYPT", "EQUATORIAL GUINEA", "ERITREA", "ETHIOPIA", "GABON", "GAMBIA", "GHANA", "GUINEA", "GUINEA-BISSAU", "KENYA", "LESOTHO", "LIBERIA", "LIBYAN ARAB JAMAHIRIYA", "MADAGASCAR", "MALI", "MALAWI", "MAURITANIA", "MAURITIUS", "MAYOTTE", "MOROCCO", "MOZAMBIQUE", "NAMIBIA", "NIGER", "NIGERIA", "REUNION ISLAND", "RWANDA", "SAO TOME AND PRINCIPE", "SENEGAL", "SEYCHELLES", "SIERRA LEONE", "SOMALIA", "SOUTH AFRICA", "SOUTH SUDAN", "SUDAN", "SWAZILAND", "TANZANIA, UNITED REPUBLIC OF", "TOGO", "TUNISIA", "UGANDA", "WESTERN SAHARA", "ZAMBIA", "ZIMBABWE"]
+const africanCountries_ISO_3 = ["DZA", "AGO", "BEN", "BWA", "BFA", "BDI", "CMR", "CPV", "CAF", "TCD", "COM", "COG", "COD", "CIV", "DJI", "EGY", "GNQ", "ERI", "ETH", "GAB", "GMB", "GHA", "GIN", "GNB", "KEN", "LSO", "LBR", "LBY", "MDG", "MLI", "MWI", "MRT", "MUS", "MYT", "MAR", "MOZ", "NAM", "NER", "NGA", "REU", "RWA", "STP", "SEN", "SYC", "SLE", "SOM", "ZAF", "SSD", "SDN", "SWZ", "TZA", "TGO", "TUN", "UGA", "ESH", "ZMB", "ZWE"];
 
-// const africanCountries_ISO_2 = ["DZ", "AO", "BJ", "BW", "BF", "BI", "CM", "CV", "CF", "TD", "KM", "CG", "CD", "CI", "DJ", "EG", "GQ", "ER", "ET", "GA", "GM", "GH", "GN", "GW", "KE", "LS", "LR", "LY", "MG", "ML", "MW", "MR", "MU", "YT", "MA", "MZ", "NA", "NE", "NG", "RE", "RW", "ST", "SN", "SC", "SL", "SO", "ZA", "SS", "SD", "SZ", "TZ", "TG", "TN", "UG", "EH", "ZM", "ZW"];
+const africanCountries_ISO_2 = ["DZ", "AO", "BJ", "BW", "BF", "BI", "CM", "CV", "CF", "TD", "KM", "CG", "CD", "CI", "DJ", "EG", "GQ", "ER", "ET", "GA", "GM", "GH", "GN", "GW", "KE", "LS", "LR", "LY", "MG", "ML", "MW", "MR", "MU", "YT", "MA", "MZ", "NA", "NE", "NG", "RE", "RW", "ST", "SN", "SC", "SL", "SO", "ZA", "SS", "SD", "SZ", "TZ", "TG", "TN", "UG", "EH", "ZM", "ZW"];
 // const africanCountries_ISO_3 = ["DZA", "AGO", "BEN", "BWA", "BFA", "BDI", "CMR", "CPV", "CAF", "TCD", "COM", "COG", "COD", "CIV", "DJI", "EGY", "GNQ", "ERI", "ETH", "GAB", "GMB", "GHA", "GIN", "GNB", "KEN", "LSO", "LBR", "LBY", "MDG", "MLI", "MWI", "MRT", "MUS", "MYT", "MAR", "MOZ", "NAM", "NER", "NGA", "REU", "RWA", "STP", "SEN", "SYC", "SLE", "SOM", "ZAF", "SSD", "SDN", "SWZ", "TZA", "TGO", "TUN", "UGA", "ESH", "ZMB", "ZWE"];
 
 // const africanCountries_ISO_2 = ["DZ", "AO", "BJ", "BW", "BF", "BI", "CM", "CV", "CF", "TD", "KM", "CG", "CD", "CI", "DJ", "EG", "GQ", "ER", "ET", "GA", "GM", "GH", "GN", "GW", "KE", "LS", "LR", "LY", "MG", "ML", "MW", "MR", "MU", "YT", "MA", "MZ", "NA", "NE", "NG", "RE", "RW", "ST", "SN", "SC", "SL", "SO", "ZA", "SS", "SD", "SZ", "TZ", "TG", "TN", "UG", "EH", "ZM", "ZW"];
@@ -109,7 +108,7 @@ const MapDetail = () => {
 const Map = () => {
     const classes = useStyles();
     const mapOptions = {
-        center: [9.1021, 17.2812],
+        center: [9.1021, 17.2812], //Center of Africa
         zoom: 3
     };
     
@@ -121,6 +120,7 @@ const Map = () => {
     const [filterType, setFilterType] = useState("download_AVG");
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
+    const [mlabDataDate, setMlabDataDate] = useState({});
   
 
 
@@ -209,7 +209,7 @@ const Map = () => {
                 
             }
         });
-        console.log("New Features Merged: ", newFeaturesMerged);
+        console.log("....................................New Features Merged: ", newFeaturesMerged);
         data["features"] = newFeaturesMerged;
         if (Object.keys(geoDataFileObject).length !== 0){
             setGeoDataFileObject({});
@@ -221,14 +221,14 @@ const Map = () => {
         console.log("geoDataFileObject: ", geoDataFileObject);
     }, [dateFilter, filterType])
     
-
+    const API_KEY = "d2d948fd-9f35-476a-a5e8-0acfda2f13ec";
     return (
-        <Grid container spacing={3} className={classes.root} >
-            <Grid item xs={9}>
+        <div className="mainContainer">
+            <div className="leftbar">
                 <MapContainer className={classes.mapContainer} center={mapOptions.center} zoom={mapOptions.zoom} scrollWheelZoom={false}>
                     <TileLayer 
                         attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
-                        url="https://tiles.stadiamaps.com/tiles/outdoors/{z}/{x}/{y}{r}.png"
+                        url="https://tiles.stadiamaps.com/tiles/outdoors/{z}/{x}/{y}{r}.png?api_key=d2d948fd-9f35-476a-a5e8-0acfda2f13ec"
                     />
 
                     {/* <Marker position={mapOptions.center} zoom={mapOptions.zoom}>
@@ -239,16 +239,29 @@ const Map = () => {
                     {geoDataFileObject["features"] && <GeoJSON onEachFeature={onEachFeature} style={featureStyle} data={geoDataFileObject} />}
                     <MapDetail />
                 </MapContainer>
-                <MlabContainer date={dateFilter} options={filterType} iso_2={africanCountries_ISO_2} iso_3={africanCountries_ISO_3} countries={africanCountries}/>
-                
-            </Grid>
-            <Grid item xs={3}>
-                <Rightbar dateFilterCallBack={setDateFromFilterBar} filteredDateValue={dateFilter} dataLoading={loading} setFilterOption={setFilterType}/>
-            </Grid>
+                <MlabContainer 
+                    date={dateFilter} 
+                    options={filterType} 
+                    iso_2={africanCountries_ISO_2} 
+                    iso_3={africanCountries_ISO_3} 
+                    countries={africanCountries} 
+                    setMlabFilter={setMlabDataDate}
+                />
+            </div>
+            <div className="rightbar">
+                <Rightbar 
+                    dateFilterCallBack={setDateFromFilterBar} 
+                    filteredDateValue={dateFilter} 
+                    dataLoading={loading} 
+                    setFilterOption={setFilterType}
+                    countries_Data={mlabDataDate} 
+                    date_Filter={dateFilter}
+                />
+            </div>
         
             
            
-        </Grid>
+        </div>
     )
 };
 
